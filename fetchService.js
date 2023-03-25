@@ -4,11 +4,11 @@ import { placeType } from "./GooglePlacesAPI";
 //Services
 import { getUserLocation } from './userlocationservice';
 
-export const getClubs = async () => {
+export const getRestaurants = async () => {
     const userLocation = await getUserLocation();
     const latitude = userLocation.latitude;
     const longitude = userLocation.longitude;
-    const radius = 5000;
+    const radius = 4000;
     const places = [];
   
     const url =
@@ -42,7 +42,7 @@ export const getClubs = async () => {
         place['placeName'] = googlePlace.name;
         places.push(place);
       }
-      // Show all the places around 4 km from San Francisco.
+      
       console.log(
         'Heres a bar: ' +
           places.map((nearbyPlaces) => nearbyPlaces.placeName),
